@@ -696,11 +696,13 @@ export type AriaRole =
 	| 'treeitem'
 	| (string & {});
 
+export type HTMLClassMap = string | { [className: string]: boolean } | Array<HTMLClassMap>;
+
 export interface HTMLAttributes<T extends EventTarget> extends AriaAttributes, DOMAttributes<T> {
 	// Standard HTML Attributes
 	accesskey?: string | undefined | null;
 	autofocus?: boolean | undefined | null;
-	class?: string | undefined | null;
+	class?: HTMLClassMap | undefined | null;
 	contenteditable?: Booleanish | 'inherit' | 'plaintext-only' | undefined | null;
 	contextmenu?: string | undefined | null;
 	dir?: string | undefined | null;
@@ -1412,8 +1414,8 @@ export interface SvelteWindowAttributes extends HTMLAttributes<Window> {
 
 export interface SVGAttributes<T extends EventTarget> extends AriaAttributes, DOMAttributes<T> {
 	// Attributes which also defined in HTMLAttributes
-	className?: string | undefined | null;
-	class?: string | undefined | null;
+	className?: HTMLClassMap | undefined | null;
+	class?: HTMLClassMap | undefined | null;
 	color?: string | undefined | null;
 	height?: number | string | undefined | null;
 	id?: string | undefined | null;
