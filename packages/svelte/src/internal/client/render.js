@@ -439,9 +439,9 @@ export function to_class(value) {
  */
 export function class_toggle(dom, class_name, value) {
 	if (value) {
-		dom.classList.add(class_name);
+		dom.classList.add.apply(dom.classList, class_name.split('.'));
 	} else {
-		dom.classList.remove(class_name);
+		dom.classList.remove.apply(dom.classList, class_name.split('.'));
 	}
 }
 
